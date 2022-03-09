@@ -40,8 +40,15 @@ const products = [
 // - f(g(x)) = f(g(x))
 // - f(g(x)) = x
 
-// const g = (a) => a + 1;
-// const f = (a) => a * a;
+const g = (a) => a + 1;
+const f = (a) => a * a;
+
+// log(f(g(1)));
+
+// [1]
+//   .map(g)
+//   .map(f)
+//   .forEach((a) => log(a));
 
 // #################################################################
 // ### Promise (from Future monad)
