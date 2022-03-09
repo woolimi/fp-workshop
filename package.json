@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "light-fp.js",
+  "scripts": {
+    "chap1": "nodemon ./chaptor1.js",
+    "chap2": "nodemon ./chaptor2.js",
+    "chap3": "nodemon ./chaptor3.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fxts/core": "^0.5.0",
+    "fluture": "^14.0.0",
+    "ramda": "^0.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
