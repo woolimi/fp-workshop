@@ -35,7 +35,7 @@ const products = [
 // Total price of 3 products less than 30
 
 // #################################################################
-// ### Monad, Promise
+// ### Monad(functor), Promise
 // - f * g
 // - f(g(x)) = f(g(x))
 // - f(g(x)) = x
