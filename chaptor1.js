@@ -40,8 +40,8 @@ const products = [
 // - f(g(x)) = f(g(x))
 // - f(g(x)) = x
 
-const g = (a) => a + 1;
-const f = (a) => a * a;
+// const g = (a) => a + 1;
+// const f = (a) => a * a;
 
 // log(f(g(1)));
 
@@ -56,6 +56,8 @@ const f = (a) => a * a;
 
 // const g = JSON.parse;
 // const f = ({ k }) => k;
+
+// Promise.resolve('{"k": 1}').then(g).then(f).then(log).catch(log);
 
 // #################################################################
 // ### Async with FP
