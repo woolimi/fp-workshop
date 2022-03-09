@@ -7,8 +7,7 @@ export const curry =
     args.length ? f(a, ...args) : (...args2) => f(a, ...args2);
 
 export const isIterable = (iter) => typeof iter[Symbol.iterator] === "function";
-export const isAsyncIterable = (iter) =>
-  typeof iter[Symbol.asyncIterator] === "function";
+export const isAsyncIterable = (iter) => typeof iter[Symbol.asyncIterator] === "function";
 
 export const toAsync = (iter) => {
   const iterator = iter[Symbol.iterator]();

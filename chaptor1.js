@@ -1,5 +1,5 @@
 import { delay } from "@fxts/core";
-import { log, add } from "./final.js";
+import { log } from "./final.js";
 
 const products = [
   { id: "candy", name: "Candy", price: 10, onSale: true },
