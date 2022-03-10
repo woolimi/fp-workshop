@@ -93,7 +93,7 @@ export const reduce = curry((f, acc, iter) => {
   if (isAsyncIterable(iter)) {
     return _async(f, acc, iter);
   }
-  throw new Error("Error in reduce");
+  throw new Error("Invalid iterator");
 });
 
 export const peek = curry((f, iter) => {
@@ -114,8 +114,6 @@ export const peek = curry((f, iter) => {
 export const go = (...args) => reduce(go1, args);
 
 export const toArray = (iter) => {
-  if (isIterable(iter)) return Array.from(iter);
-
   const _async = async (iter) => {
     const res = [];
     for await (const a of iter) {
@@ -123,5 +121,9 @@ export const toArray = (iter) => {
     }
     return res;
   };
-  return _async(iter);
+
+  if (isIterable(iter)) return Array.from(iter);
+  if (isAsyncIterable(iter)) return _async(iter);
+
+  throw new Error("Invalid iterator");
 };
