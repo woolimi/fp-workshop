@@ -1,15 +1,9 @@
+// Let's try FP library
+
 // #################################################################
 // ### Concurrency
 
-import {
-  pipe,
-  map,
-  toArray,
-  delay,
-  toAsync,
-  peek,
-  concurrent,
-} from "@fxts/core";
+import { pipe, map, toArray, delay, toAsync, peek, concurrent } from "@fxts/core";
 
 const log = console.log;
 export const EMAIL_REGEX =
@@ -18,9 +12,7 @@ const EmailAPI = {
   async check(email) {
     const isValid = !!email.match(EMAIL_REGEX);
     await delay(500);
-    return isValid
-      ? { email, format_valid: true }
-      : { email, format_valid: false };
+    return isValid ? { email, format_valid: true } : { email, format_valid: false };
   },
 };
 
