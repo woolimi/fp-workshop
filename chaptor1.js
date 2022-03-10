@@ -70,4 +70,4 @@ const ProductAPI = {
   },
 };
 
-// go(["Candy", "Ice cream", "Cake", "Donuts", "Chocolat"], log);
+// go(["candy", "ice-cream", "cake", "donuts", "chocolate"], log);
