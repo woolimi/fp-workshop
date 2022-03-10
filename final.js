@@ -15,10 +15,7 @@ export const toAsync = (iter) => {
   return {
     next() {
       const { value, done } = iterator.next();
-      if (value instanceof Promise) {
-        return value.then((value) => ({ done, value }));
-      }
-      return { done, value };
+      return value instanceof Promise ? value.then((value) => ({ done, value })) : { done, value };
     },
     [Symbol.asyncIterator]() {
       return this;
