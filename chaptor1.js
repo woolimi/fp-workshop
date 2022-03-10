@@ -63,9 +63,9 @@ const products = [
 // ### Async with FP
 // Get total price of onSale products
 const ProductAPI = {
-  async fetch(name) {
+  async fetch(id) {
     await delay(200);
-    const product = products.find((p) => p.name === name);
+    const product = products.find((p) => p.id === id);
     return product || Promise.reject({ message: "No product" });
   },
 };
