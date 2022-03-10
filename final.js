@@ -1,5 +1,6 @@
 export const log = console.log;
 export const add = (a, b) => a + b;
+const InvalidIterError = new Error("Invalid Iterator");
 
 export const curry =
   (f) =>
@@ -35,7 +36,9 @@ export const map = curry((f, iter) => {
     }
   };
 
-  return isAsyncIterable(iter) ? _async(f, iter) : _sync(f, iter);
+  if (isIterable(iter)) return _sync(f, iter);
+  if (isAsyncIterable(iter)) return _async(f, iter);
+  throw InvalidIterError;
 });
 
 export const filter = curry((f, iter) => {
@@ -49,7 +52,10 @@ export const filter = curry((f, iter) => {
       yield f(a);
     }
   };
-  return isAsyncIterable(iter) ? _async(f, iter) : _sync(f, iter);
+
+  if (isIterable(iter)) return _sync(f, iter);
+  if (isAsyncIterable(iter)) return _async(f, iter);
+  throw InvalidIterError;
 });
 
 export const go1 = (a, f) => (a instanceof Promise ? a.then(f) : f(a));
@@ -82,14 +88,9 @@ export const reduce = curry((f, acc, iter) => {
     });
   }
 
-  if (isIterable(iter)) {
-    return _sync(f, acc, iter);
-  }
-
-  if (isAsyncIterable(iter)) {
-    return _async(f, acc, iter);
-  }
-  throw new Error("Invalid iterator");
+  if (isIterable(iter)) return _sync(f, acc, iter);
+  if (isAsyncIterable(iter)) return _async(f, acc, iter);
+  throw InvalidIterError;
 });
 
 export const peek = curry((f, iter) => {
@@ -104,7 +105,9 @@ export const peek = curry((f, iter) => {
     }
   };
 
-  return isAsyncIterable(iter) ? _async(f, iter) : _sync(f, iter);
+  if (isIterable(iter)) return _sync(f, iter);
+  if (isAsyncIterable(iter)) return _async(f, iter);
+  throw InvalidIterError;
 });
 
 export const go = (...args) => reduce(go1, args);
@@ -120,6 +123,5 @@ export const toArray = (iter) => {
 
   if (isIterable(iter)) return Array.from(iter);
   if (isAsyncIterable(iter)) return _async(iter);
-
-  throw new Error("Invalid iterator");
+  throw InvalidIterError;
 };
