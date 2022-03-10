@@ -13,7 +13,7 @@ export const toAsync = (iter) => {
   const iterator = iter[Symbol.iterator]();
 
   return {
-    async next() {
+    next() {
       const { value, done } = iterator.next();
       if (value instanceof Promise) {
         return value.then((value) => ({ done, value }));
