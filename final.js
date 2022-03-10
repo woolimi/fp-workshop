@@ -96,7 +96,7 @@ export const reduce = curry((f, acc, iter) => {
 export const peek = curry((f, iter) => {
   const _async = async function* (f, iter) {
     for await (const a of iter) {
-      yield (await f(a), await a);
+      yield (await f(a), a);
     }
   };
   const _sync = function* (f, iter) {
