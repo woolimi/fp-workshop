@@ -1,5 +1,4 @@
 import { delay } from "@fxts/core";
-import { F } from "ramda";
 import { log, InvalidIterError } from "./final.js";
 
 const products = [
