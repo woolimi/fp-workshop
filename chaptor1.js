@@ -1,12 +1,13 @@
 import { delay } from "@fxts/core";
+import { F } from "ramda";
 import { log, InvalidIterError } from "./final.js";
 
 const products = [
   { id: "candy", name: "Candy", price: 10, onSale: true },
   { id: "ice-cream", name: "Ice cream", price: 20, onSale: true },
   { id: "cake", name: "Cake", price: 30, onSale: false },
-  { id: "donuts", name: "Donuts", price: 15, onSale: true },
-  { id: "chocolate", name: "Chocolate", price: 12, onSale: false },
+  { id: "donuts", name: "Donuts", price: 12, onSale: true },
+  { id: "chocolate", name: "Chocolate", price: 15, onSale: false },
   { id: "flower", name: "Flower", price: 40, onSale: false },
   { id: "sofa", name: "Sofa", price: 120, onSale: true },
   { id: "bed", name: "Bed", price: 400, onSale: true },
@@ -33,6 +34,27 @@ const products = [
 
 // 2. Functional
 // Total price of 3 products less than 30
+
+const map = function* (f, iter) {
+  for (const a of iter) {
+    yield f(a);
+  }
+};
+
+function f2(products) {
+  let total = 0;
+  let count = 0;
+  for (const price of map((p) => p.price, products)) {
+    if (price < 30) {
+      total += price;
+      count++;
+    }
+    if (count === 3) break;
+  }
+  return total;
+}
+
+log(f2(products));
 
 // #################################################################
 // ### Monad(functor), Promise
