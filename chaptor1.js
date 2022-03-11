@@ -35,27 +35,6 @@ const products = [
 // 2. Functional
 // Total price of 3 products less than 30
 
-const map = function* (f, iter) {
-  for (const a of iter) {
-    yield f(a);
-  }
-};
-
-function f2(products) {
-  let total = 0;
-  let count = 0;
-  for (const price of map((p) => p.price, products)) {
-    if (price < 30) {
-      total += price;
-      count++;
-    }
-    if (count === 3) break;
-  }
-  return total;
-}
-
-log(f2(products));
-
 // #################################################################
 // ### Monad(functor), Promise
 // - f * g
