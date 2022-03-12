@@ -36,7 +36,7 @@ const products = [
 
 // #################################################################
 // ### Monad(functor), Promise
-// Monads are used to compose functions "safely"
+// Monad is used to compose functions "safely"
 // - f * g
 // - f(g(x)) = f(g(x))
 // - f(g(x)) = x
