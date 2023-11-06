@@ -16,7 +16,7 @@ const products = [
 // ### Imperative vs Functional
 // 1. Imperative
 // Total price of 3 products less than 30
-// function f1() {
+// function imperative() {
 //   let total = 0;
 //   let count = 0;
 //   for (const a of products) {
@@ -29,10 +29,14 @@ const products = [
 //   console.log(total);
 // }
 
-// f1();
+// imperative();
 
 // 2. Functional
 // Total price of 3 products less than 30
+
+// const functional() {
+
+// }
 
 // #################################################################
 // ### Monad(functor), Promise
