@@ -49,7 +49,7 @@ export const filter = curry((f, iter) => {
   };
   const _sync = function* (f, iter) {
     for (const a of iter) {
-      yield f(a);
+      if (f(a)) yield a;
     }
   };
 
